@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "87530307372",
+    "project_id": "kaffeine-b7e0d",
+    "storage_bucket": "kaffeine-b7e0d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87530307372:android:313ba7033c7c70ee287689",
+        "android_client_info": {
+          "package_name": "com.arslan.kaffeine"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE21MvdXwmIJ6eth8FtZyJsO6Z_wrQKog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
