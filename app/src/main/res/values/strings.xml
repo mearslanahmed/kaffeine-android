@@ -2,4 +2,14 @@
     <string name="app_name">KAFFEINE</string>
     <string name="choice_your_favourite_coffee">Choice your \n Favourite Coffee</string>
     <string name="get_started">Get Started</string>
+    <string name="search_anything">Search anything...</string>
+    <string name="see_all">See all</string>
+    <string name="popular_coffees">Popular Coffees</string>
+    <string name="profile">Profile</string>
+    <string name="my_order">My Order</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="cart">Cart</string>
+    <string name="explorer">Explorer</string>
+    <string name="arslan_ahmed">Arslan Ahmed</string>
+    <string name="category">Category</string>
 </resources>
