@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.arslan.kaffeine.Adapter.CategoryAdapter
 import com.arslan.kaffeine.ViewModel.MainViewModel
 import com.arslan.kaffeine.databinding.ActivityMainBinding
 import com.bumptech.glide.Glide
@@ -17,10 +19,11 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        intBanner()
+        initBanner()
+        initCategory()
     }
 
-    private fun intBanner() {
+    private fun initBanner() {
         binding.progressBarBanner.visibility = View.VISIBLE
         viewModel.loadBanner().observeForever {
             Glide.with(this@MainActivity)
@@ -29,5 +32,19 @@ class MainActivity : AppCompatActivity() {
             binding.progressBarBanner.visibility = View.GONE
         }
         viewModel.loadBanner()
+    }
+
+    private fun initCategory(){
+        binding.progressBarCategory.visibility = View.VISIBLE
+        viewModel.loadCategory().observeForever {
+            binding.categoryView.layoutManager = LinearLayoutManager(
+                this@MainActivity,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+            binding.categoryView.adapter = CategoryAdapter(it)
+            binding.progressBarCategory.visibility = View.GONE
+        }
+        viewModel.loadCategory()
     }
 }
