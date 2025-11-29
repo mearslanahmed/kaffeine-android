@@ -1,4 +1,3 @@
 package com.arslan.kaffeine.Domain
 
-class BannerModel(val url: String= "") {
-}
+data class BannerModel(val url: String="")

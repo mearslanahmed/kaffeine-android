@@ -1,5 +1,6 @@
 package com.arslan.kaffeine.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.arslan.kaffeine.Domain.BannerModel
@@ -19,13 +20,15 @@ class MainRepository {
                 val list = mutableListOf<BannerModel>()
                 for (childSnapshot in snapshot.children) {
                     val item = childSnapshot.getValue(BannerModel::class.java)
-                    item?.let { list.add(it) }
+                    if (item != null) {
+                        list.add(item)
+                    }
                 }
                 listData.value = list
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                TODO()
             }
         })
         return listData
