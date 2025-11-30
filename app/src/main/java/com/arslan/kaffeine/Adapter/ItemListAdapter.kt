@@ -11,9 +11,7 @@ import com.bumptech.glide.Glide
 
 class ItemListAdapter(val items: MutableList<ItemsModel>):
     RecyclerView.Adapter<ItemListAdapter.ViewHolder>(){
-
     lateinit var context: Context
-
     inner class ViewHolder(var binding: ViewholderItemsListBinding):
     RecyclerView.ViewHolder(binding.root)
 
