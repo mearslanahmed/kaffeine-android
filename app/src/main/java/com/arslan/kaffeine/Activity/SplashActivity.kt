@@ -1,4 +1,4 @@
-package com.arslan.kaffeine
+package com.arslan.kaffeine.Activity
 
 import android.content.Intent
 import android.os.Bundle
