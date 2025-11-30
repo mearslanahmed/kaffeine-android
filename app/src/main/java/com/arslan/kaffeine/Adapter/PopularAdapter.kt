@@ -28,7 +28,10 @@ class PopularAdapter(val items: MutableList<ItemsModel>):
 
     override fun onBindViewHolder(holder: PopularAdapter.ViewHolder, position: Int) {
         holder.binding.titleTxt.text = items[position].title
-        holder.binding.priceTxt.text = "Rp-"+items[position].price.toString()
+        holder.binding.priceTxt.text = buildString {
+            append("$-")
+            append(items[position].price.toString())
+        }
         holder.binding.subtitleTxt.text = items[position].extra.toString()
 
         Glide.with(context)
