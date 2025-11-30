@@ -1,21 +1,46 @@
 package com.arslan.kaffeine.Activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.arslan.kaffeine.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import com.arslan.kaffeine.Adapter.ItemListAdapter
+import com.arslan.kaffeine.databinding.ActivityItemsListBinding
+import com.arslan.kaffeine.viewmodel.MainViewModel
 
 class ItemsListActivity : AppCompatActivity() {
+    lateinit var binding: ActivityItemsListBinding
+    private lateinit var viewModel: MainViewModel
+    private var id: String = ""
+    private var title: String? = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_items_list)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityItemsListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        getBundles()
+        initList()
+    }
+
+    private fun initList() {
+        binding.progressBar.visibility = View.VISIBLE
+        viewModel.loadItems(id).observe(this) { items ->
+            binding.listView.layoutManager = GridLayoutManager(this@ItemsListActivity, 2)
+            binding.listView.adapter = ItemListAdapter(items)
+            binding.progressBar.visibility = View.GONE
         }
+        binding.backBtn.setOnClickListener { finish() }
+    }
+
+    private fun getBundles() {
+        id = intent.getStringExtra("id") ?: ""
+        title = intent.getStringExtra("title")
+        binding.categoryTxt.text = title
     }
 }
