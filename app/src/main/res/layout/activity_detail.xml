@@ -27,6 +27,7 @@
                     android:layout_width="0dp"
                     android:layout_height="430dp"
                     android:scaleType="fitCenter"
+                    android:padding="16dp"
                     android:contentDescription="@string/item_image_description"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +61,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/titleBtn"
+                android:id="@+id/titleTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
@@ -158,7 +159,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/quantityTxt"
+                        android:id="@+id/numberInCartTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/_1"
