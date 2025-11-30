@@ -14,9 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KAFFEINE">
         <activity
+            android:name=".Activity.ItemsListActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.SplashActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +27,7 @@
         </activity>
         <activity
             android:name=".Activity.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
