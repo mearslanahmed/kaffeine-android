@@ -1,10 +1,12 @@
 package com.arslan.kaffeine.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.arslan.kaffeine.Activity.ItemsListActivity
 import com.arslan.kaffeine.Domain.CategoryModel
 import com.arslan.kaffeine.R
 import com.arslan.kaffeine.databinding.ViewholderCategoryBinding
@@ -45,10 +47,21 @@ class CategoryAdapter(val items: MutableList<CategoryModel>):
         }
 
         holder.binding.root.setOnClickListener {
+            val adapterPosition = holder.adapterPosition
+            if (adapterPosition == RecyclerView.NO_POSITION) {
+                return@setOnClickListener
+            }
             lastSelectedPosition = selectedPosition
-            selectedPosition = position
+            selectedPosition = adapterPosition
             notifyItemChanged(lastSelectedPosition)
             notifyItemChanged(selectedPosition)
+
+            val clickedItem = items[adapterPosition]
+            val intent = Intent(context, ItemsListActivity::class.java).apply {
+                putExtra("id", clickedItem.id.toString())
+                putExtra("title", clickedItem.title)
+            }
+            context.startActivity(intent)
         }
     }
 
