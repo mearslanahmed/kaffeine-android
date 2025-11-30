@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.arslan.kaffeine.Domain.BannerModel
 import com.arslan.kaffeine.Domain.CategoryModel
+import com.arslan.kaffeine.Domain.ItemsModel
 import com.arslan.kaffeine.repository.MainRepository
 
 class MainViewModel: ViewModel() {
@@ -15,5 +16,9 @@ class MainViewModel: ViewModel() {
 
     fun loadCategory(): LiveData<MutableList<CategoryModel>>{
         return repository.loadCategory()
+    }
+
+    fun loadPopular(): LiveData<MutableList<ItemsModel>>{
+        return repository.loadPopularCoffees()
     }
 }
