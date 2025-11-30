@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.arslan.kaffeine.Domain.BannerModel
 import com.arslan.kaffeine.Domain.CategoryModel
+import com.arslan.kaffeine.Domain.ItemsModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -43,6 +44,28 @@ class MainRepository {
                 val list = mutableListOf<CategoryModel>()
                 for (childSnapshot in snapshot.children) {
                     val item = childSnapshot.getValue(CategoryModel::class.java)
+                    if (item != null) {
+                        list.add(item)
+                    }
+                }
+                listData.value = list
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO()
+            }
+        })
+        return listData
+    }
+
+    fun loadPopularCoffees(): LiveData<MutableList<ItemsModel>> {
+        val listData = MutableLiveData<MutableList<ItemsModel>>()
+        val ref = firebaseDatabase.getReference("Popular")
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val list = mutableListOf<ItemsModel>()
+                for (childSnapshot in snapshot.children) {
+                    val item = childSnapshot.getValue(ItemsModel::class.java)
                     if (item != null) {
                         list.add(item)
                     }
