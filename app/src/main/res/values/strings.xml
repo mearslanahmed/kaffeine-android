@@ -12,4 +12,26 @@
     <string name="explorer">Explorer</string>
     <string name="arslan_ahmed">Arslan Ahmed</string>
     <string name="category">Category</string>
+    <string name="description">Description</string>
+    <string name="back">Back</string>
+    <string name="title">Title</string>
+    <string name="coffee_size">Coffee Size</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+    <string name="qty">Qty.</string>
+    <string name="minus">-</string>
+    <string name="_1">1</string>
+    <string name="plus">+</string>
+    <string name="_0">0</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="price">$0</string>
+
+    <!-- Content Descriptions -->
+    <string name="item_image_description">Image of the coffee item</string>
+    <string name="back_button_arrow">Back button arrow</string>
+    <string name="favorite_button">Favorite button</string>
+    <string name="rating_star">Rating star</string>
+    <string name="decrease_quantity">Decrease quantity</string>
+    <string name="increase_quantity">Increase quantity</string>
 </resources>
