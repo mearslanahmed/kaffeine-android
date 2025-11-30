@@ -1,9 +1,11 @@
 package com.arslan.kaffeine.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.arslan.kaffeine.Activity.DetailActivity
 import com.arslan.kaffeine.Domain.ItemsModel
 import com.arslan.kaffeine.databinding.ViewholderPopularBinding
 import com.bumptech.glide.Glide
@@ -39,7 +41,9 @@ class PopularAdapter(val items: MutableList<ItemsModel>):
             .into(holder.binding.pic)
 
         holder.itemView.setOnClickListener {
-
+            val intent = Intent(context, DetailActivity::class.java)
+            intent.putExtra("object", items[position])
+            context.startActivity(intent)
         }
     }
 
