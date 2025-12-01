@@ -1,5 +1,6 @@
 package com.arslan.kaffeine.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -28,6 +29,13 @@ class MainActivity : AppCompatActivity() {
         initBanner()
         initCategory()
         initPopular()
+        initBottomMenu()
+    }
+
+    private fun initBottomMenu() {
+        binding.cartBtn.setOnClickListener {
+            startActivity(Intent(this, CartActivity::class.java))
+        }
     }
 
     private fun initPopular() {
