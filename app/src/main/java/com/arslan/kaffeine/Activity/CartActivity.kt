@@ -47,21 +47,33 @@ class CartActivity : AppCompatActivity() {
         binding.button.setOnClickListener{
             Toast.makeText(this, "Checkout process started!", Toast.LENGTH_SHORT).show()
         }
+
+        binding.discountBtn.setOnClickListener {
+            var discountPercentage = binding.discountTxt.text.toString()
+            if (discountPercentage == "KAFFEINE10"){
+                calculateCart(0.1)
+                Toast.makeText(this, "10% discount applied", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Invalid discount code", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
-    private fun calculateCart() {
+    private fun calculateCart(discountPercentage: Double = 0.0) {
         val percentTax = 0.02
         val delivery = 15.0
         tax = (managementCart.getTotalFee() * percentTax * 100) / 100.0
-        val total = ((managementCart.getTotalFee() + tax + delivery) * 100) / 100.0
         val itemTotal = (managementCart.getTotalFee() * 100) / 100.0
+
+        val totalWithoutDiscount = itemTotal + tax + delivery
+        val discountAmount = totalWithoutDiscount * discountPercentage
+        val total = (totalWithoutDiscount - discountAmount)
         
         binding.apply { 
             totalFeeTxt.text = "$${itemTotal}"
             taxFeeTxt.text = "$${tax}"
             deliveryFeeTxt.text = "$${delivery}"
-            totalTxt.text = "$${total}"
+            totalTxt.text = "$${String.format("%.2f", total)}"
         }
-
     }
 }
