@@ -3,10 +3,8 @@ package com.arslan.kaffeine.Activity
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.arslan.kaffeine.Domain.ItemsModel
-import com.arslan.kaffeine.Helper.ManagmentCart
+import com.arslan.kaffeine.Helper.ManagementCart
 import com.arslan.kaffeine.R
 import com.arslan.kaffeine.databinding.ActivityDetailBinding
 import com.bumptech.glide.Glide
@@ -14,7 +12,7 @@ import com.bumptech.glide.Glide
 class DetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailBinding
     private lateinit var item: ItemsModel
-    private lateinit var managmentCart: ManagmentCart
+    private lateinit var managementCart: ManagementCart
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +20,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        managmentCart = ManagmentCart(this)
+        managementCart = ManagementCart(this)
 
 
         bundle()
@@ -69,7 +67,7 @@ class DetailActivity : AppCompatActivity() {
                 item.numberInCart = Integer.valueOf(
                     numberInCartTxt.text.toString()
                 )
-                managmentCart.insertItems(item)
+                managementCart.insertItems(item)
             }
             backBtn.setOnClickListener { finish() }
 
