@@ -34,4 +34,5 @@
     <string name="rating_star">Rating star</string>
     <string name="decrease_quantity">Decrease quantity</string>
     <string name="increase_quantity">Increase quantity</string>
+    <string name="subtotal">Subtotal</string>
 </resources>
