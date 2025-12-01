@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightGrey"
+    tools:context=".Activity.CartActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/discountLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="48dp">
+
+                <TextView
+                    android:id="@+id/backBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/back_btn"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/back"
+                    android:textColor="@color/darkBrown"
+                    app:drawableStartCompat="@drawable/back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cart"
+                    android:textColor="@color/darkBrown"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/backBtn"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/discountLayout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/cream_bg"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/editTextText2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:ems="10"
+            android:hint="@string/enter_your_discount_code"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:textColor="@color/darkBrown"
+            android:textColorHint="@color/darkBrown"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button2"
+            style="@android:style/Widget.Button"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/brown_full_corner_bg"
+            android:text="@string/apply"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cream_top_corner"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp">
+
+            <TextView
+                android:id="@+id/subtotalTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/subtotal"
+                android:textColor="@color/darkBrown"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/totalFeeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$-"
+                android:textColor="@color/darkBrown"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/subtotalTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/subtotalTxt" />
+
+            <TextView
+                android:id="@+id/deliveryTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/delivery"
+                android:textColor="@color/darkBrown"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/subtotalTxt" />
+
+            <TextView
+                android:id="@+id/deliveryFeeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$-"
+                android:textColor="@color/darkBrown"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/deliveryTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/deliveryTxt" />
+
+            <TextView
+                android:id="@+id/totalTaxTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/total_tax"
+                android:textColor="@color/darkBrown"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/deliveryTxt" />
+
+            <TextView
+                android:id="@+id/taxFeeTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$-"
+                android:textColor="@color/darkBrown"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/totalTaxTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/totalTaxTxt" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/darkBrown"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalTaxTxt" />
+
+            <TextView
+                android:id="@+id/totalLabelTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/total"
+                android:textColor="@color/darkBrown"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+            <TextView
+                android:id="@+id/totalTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$-"
+                android:textColor="@color/darkBrown"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/totalLabelTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/totalLabelTxt" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button"
+            style="@android:style/Widget.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/brown_full_corner_bg"
+            android:text="@string/proceed_to_checkout"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
