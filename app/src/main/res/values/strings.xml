@@ -35,4 +35,11 @@
     <string name="decrease_quantity">Decrease quantity</string>
     <string name="increase_quantity">Increase quantity</string>
     <string name="subtotal">Subtotal</string>
+    <string name="enter_your_discount_code">Enter Your Discount Code</string>
+    <string name="apply">Apply</string>
+    <string name="proceed_to_checkout">Proceed to Checkout</string>
+    <string name="delivery">Delivery</string>
+    <string name="total_tax">Total Tax</string>
+    <string name="back_btn">Back Btn</string>
+    <string name="total">Total</string>
 </resources>
