@@ -3,6 +3,7 @@ package com.arslan.kaffeine.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -35,6 +36,21 @@ class MainActivity : AppCompatActivity() {
     private fun initBottomMenu() {
         binding.cartBtn.setOnClickListener {
             startActivity(Intent(this, CartActivity::class.java))
+        }
+        binding.wishlistBtn.setOnClickListener {
+            startActivity(Intent(this, WishlistActivity::class.java))
+        }
+
+        binding.explorerBtn.setOnClickListener {
+            Toast.makeText(this, "Explorer clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.orderBtn.setOnClickListener {
+            Toast.makeText(this, "Order clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.profileBtn.setOnClickListener {
+            Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
         }
     }
 

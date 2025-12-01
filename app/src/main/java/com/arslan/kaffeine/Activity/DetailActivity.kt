@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.arslan.kaffeine.Domain.ItemsModel
-import com.arslan.kaffeine.Helper.ManagementCart
+import com.arslan.kaffeine.Helper.ManagmentCart
+import com.arslan.kaffeine.Helper.WishlistManager
 import com.arslan.kaffeine.R
 import com.arslan.kaffeine.databinding.ActivityDetailBinding
 import com.bumptech.glide.Glide
@@ -12,7 +13,8 @@ import com.bumptech.glide.Glide
 class DetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailBinding
     private lateinit var item: ItemsModel
-    private lateinit var managementCart: ManagementCart
+    private lateinit var managmentCart: ManagmentCart
+    private lateinit var wishlistManager: WishlistManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +22,8 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        managementCart = ManagementCart(this)
+        managmentCart = ManagmentCart(this)
+        wishlistManager = WishlistManager(this)
 
 
         bundle()
@@ -67,9 +70,13 @@ class DetailActivity : AppCompatActivity() {
                 item.numberInCart = Integer.valueOf(
                     numberInCartTxt.text.toString()
                 )
-                managementCart.insertItems(item)
+                managmentCart.insertItems(item)
             }
             backBtn.setOnClickListener { finish() }
+
+            favBtn.setOnClickListener { 
+                wishlistManager.insertItem(item)
+            }
 
             plusBtn.setOnClickListener {
                 numberInCartTxt.text = (item.numberInCart + 1).toString()

@@ -5,7 +5,7 @@ import android.widget.Toast
 import com.arslan.kaffeine.Domain.ItemsModel
 
 
-class ManagementCart(val context: Context) {
+class ManagmentCart(val context: Context) {
 
     private val tinyDB = TinyDB(context)
 

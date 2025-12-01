@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KAFFEINE">
         <activity
+            android:name=".Activity.WishlistActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.CartActivity"
             android:exported="false" />
         <activity

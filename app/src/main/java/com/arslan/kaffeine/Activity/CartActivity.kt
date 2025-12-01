@@ -7,12 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arslan.kaffeine.Adapter.CartAdapter
 import com.arslan.kaffeine.Helper.ChangeNumberItemsListener
-import com.arslan.kaffeine.Helper.ManagementCart
+import com.arslan.kaffeine.Helper.ManagmentCart
 import com.arslan.kaffeine.databinding.ActivityCartBinding
 
 class CartActivity : AppCompatActivity() {
     lateinit var binding: ActivityCartBinding
-    lateinit var managementCart: ManagementCart
+    lateinit var managementCart: ManagmentCart
     private var tax: Double = 0.0
     
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +21,7 @@ class CartActivity : AppCompatActivity() {
         binding = ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
-        managementCart = ManagementCart(this)
+        managementCart = ManagmentCart(this)
         
         calculateCart()
         setVariable()
