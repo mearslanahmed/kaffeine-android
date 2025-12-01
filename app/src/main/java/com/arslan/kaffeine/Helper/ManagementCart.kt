@@ -5,7 +5,7 @@ import android.widget.Toast
 import com.arslan.kaffeine.Domain.ItemsModel
 
 
-class ManagmentCart(val context: Context) {
+class ManagementCart(val context: Context) {
 
     private val tinyDB = TinyDB(context)
 
@@ -36,7 +36,7 @@ class ManagmentCart(val context: Context) {
         tinyDB.putListObject("CartList", listItems)
         listener.onChanged()
     }
-    fun romveItem(listItems: ArrayList<ItemsModel>, position: Int, listener: ChangeNumberItemsListener) {
+    fun removeItem(listItems: ArrayList<ItemsModel>, position: Int, listener: ChangeNumberItemsListener) {
 
         listItems.removeAt(position)
 
