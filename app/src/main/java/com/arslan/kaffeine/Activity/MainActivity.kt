@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         initBanner()
         initCategory()
@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity() {
             binding.progressBarBanner.visibility = View.GONE
         }
     }
-
     private fun initCategory() {
         binding.progressBarCategory.visibility = View.VISIBLE
         viewModel.loadCategory().observe(this) {
