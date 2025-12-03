@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.arslan.kaffeine.Domain.ItemsModel
-import com.arslan.kaffeine.Helper.ManagmentCart
+import com.arslan.kaffeine.Helper.ManagementCart
 import com.arslan.kaffeine.Helper.WishlistManager
 import com.arslan.kaffeine.R
 import com.arslan.kaffeine.databinding.ActivityDetailBinding
@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 class DetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailBinding
     private lateinit var item: ItemsModel
-    private lateinit var managmentCart: ManagmentCart
+    private lateinit var managmentCart: ManagementCart
     private lateinit var wishlistManager: WishlistManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +22,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        managmentCart = ManagmentCart(this)
+        managmentCart = ManagementCart(this)
         wishlistManager = WishlistManager(this)
 
 

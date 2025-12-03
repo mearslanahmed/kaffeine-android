@@ -1,28 +1,36 @@
 package com.arslan.kaffeine.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arslan.kaffeine.Adapter.CartAdapter
+import com.arslan.kaffeine.Domain.Order
 import com.arslan.kaffeine.Helper.ChangeNumberItemsListener
-import com.arslan.kaffeine.Helper.ManagmentCart
+import com.arslan.kaffeine.Helper.ManagementCart
 import com.arslan.kaffeine.databinding.ActivityCartBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class CartActivity : AppCompatActivity() {
-    lateinit var binding: ActivityCartBinding
-    lateinit var managementCart: ManagmentCart
+    private lateinit var binding: ActivityCartBinding
+    private lateinit var managementCart: ManagementCart
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
     private var tax: Double = 0.0
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        
-        managementCart = ManagmentCart(this)
-        
+
+        managementCart = ManagementCart(this)
+        auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
+
         calculateCart()
         setVariable()
         initCartList()
@@ -32,10 +40,11 @@ class CartActivity : AppCompatActivity() {
         binding.apply { 
             listView.layoutManager =
                 LinearLayoutManager(this@CartActivity, LinearLayoutManager.VERTICAL, false)
-            listView.adapter = CartAdapter(managementCart.getListCart(),
+            listView.adapter = CartAdapter(
+                managementCart.getListCart(),
                 this@CartActivity,
-                object : ChangeNumberItemsListener{
-                    override fun onChanged(){
+                object : ChangeNumberItemsListener {
+                    override fun onChanged() {
                         calculateCart()
                     }
                 })
@@ -44,13 +53,30 @@ class CartActivity : AppCompatActivity() {
 
     private fun setVariable() {
         binding.backBtn.setOnClickListener { finish() }
-        binding.button.setOnClickListener{
-            Toast.makeText(this, "Checkout process started!", Toast.LENGTH_SHORT).show()
+        binding.button.setOnClickListener {
+            val currentUser = auth.currentUser
+            if (currentUser != null) {
+                val order = Order(
+                    orderId = firestore.collection("Users").document().id,
+                    items = managementCart.getListCart(),
+                    totalPrice = managementCart.getTotalFee() + tax + 15.0,
+                    timestamp = System.currentTimeMillis(),
+                    status = "Processing"
+                )
+
+                firestore.collection("Users").document(currentUser.uid).collection("Orders").add(order)
+                    .addOnSuccessListener {
+                        managementCart.clearCart()
+                        Toast.makeText(this, "Order placed successfully", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, MyOrderActivity::class.java))
+                        finish()
+                    }
+            }
         }
 
         binding.discountBtn.setOnClickListener {
-            var discountPercentage = binding.discountTxt.text.toString()
-            if (discountPercentage == "KAFFEINE10"){
+            val discountCode = binding.discountTxt.text.toString()
+            if (discountCode == "KAFFEINE10") {
                 calculateCart(0.1)
                 Toast.makeText(this, "10% discount applied", Toast.LENGTH_SHORT).show()
             } else {
@@ -68,7 +94,7 @@ class CartActivity : AppCompatActivity() {
         val totalWithoutDiscount = itemTotal + tax + delivery
         val discountAmount = totalWithoutDiscount * discountPercentage
         val total = (totalWithoutDiscount - discountAmount)
-        
+
         binding.apply { 
             totalFeeTxt.text = "$${itemTotal}"
             taxFeeTxt.text = "$${tax}"

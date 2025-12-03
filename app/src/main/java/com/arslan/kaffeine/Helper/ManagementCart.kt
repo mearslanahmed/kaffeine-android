@@ -5,7 +5,7 @@ import android.widget.Toast
 import com.arslan.kaffeine.Domain.ItemsModel
 
 
-class ManagmentCart(val context: Context) {
+class ManagementCart(val context: Context) {
 
     private val tinyDB = TinyDB(context)
 
@@ -57,5 +57,9 @@ class ManagmentCart(val context: Context) {
             fee += item.price * item.numberInCart
         }
         return fee
+    }
+
+    fun clearCart() {
+        tinyDB.remove("CartList")
     }
 }

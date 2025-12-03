@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.arslan.kaffeine.Domain.ItemsModel
 import com.arslan.kaffeine.Helper.ChangeNumberItemsListener
-import com.arslan.kaffeine.Helper.ManagmentCart
+import com.arslan.kaffeine.Helper.ManagementCart
 import com.arslan.kaffeine.databinding.ViewholderCartBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -21,7 +21,7 @@ class CartAdapter(
     class ViewHolder(val binding: ViewholderCartBinding):
     RecyclerView.ViewHolder(binding.root)
 
-    private val managementCart = ManagmentCart(context)
+    private val managementCart = ManagementCart(context)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

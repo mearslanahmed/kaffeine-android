@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.orderBtn.setOnClickListener {
-            Toast.makeText(this, "Order clicked", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, MyOrderActivity::class.java))
         }
 
         binding.profileBtn.setOnClickListener {
