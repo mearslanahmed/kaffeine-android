@@ -14,10 +14,14 @@ import com.arslan.kaffeine.Adapter.PopularAdapter
 import com.arslan.kaffeine.databinding.ActivityMainBinding
 import com.arslan.kaffeine.viewmodel.MainViewModel
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +30,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
 
         initBanner()
         initCategory()
         initPopular()
         initBottomMenu()
+        initUserProfile()
+    }
+
+    private fun initUserProfile() {
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val userRef = firestore.collection("Users").document(currentUser.uid)
+            userRef.get().addOnSuccessListener { document ->
+                if (document != null) {
+                    val name = document.getString("name")
+                    binding.userNameTxt.text = name
+                }
+            }
+        }
     }
 
     private fun initBottomMenu() {
@@ -50,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.profileBtn.setOnClickListener {
-            Toast.makeText(this, "Profile clicked", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 

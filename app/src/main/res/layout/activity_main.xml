@@ -34,13 +34,14 @@
                     app:srcCompat="@drawable/profile" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/userNameTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="16dp"
                     android:paddingTop="16dp"
                     android:layout_weight="1"
+                    android:textSize="22sp"
                     android:text="@string/arslan_ahmed"
                     android:textColor="@color/darkBrown"
                     android:textStyle="bold" />
