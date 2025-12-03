@@ -47,7 +47,8 @@ class MainActivity : AppCompatActivity() {
             userRef.get().addOnSuccessListener { document ->
                 if (document != null) {
                     val name = document.getString("name")
-                    binding.userNameTxt.text = name
+                    val profileImageUrl = document.getString("profileImageUrl")
+                    binding.userNameTxt.text = "Welcome, $name"
                 }
             }
         }
@@ -71,6 +72,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.profileBtn.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
+        binding.notificationBtn.setOnClickListener {
+            startActivity(Intent(this, NotificationActivity::class.java))
         }
     }
 

@@ -47,7 +47,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/notificationBtn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/brown_full_corner_bg"

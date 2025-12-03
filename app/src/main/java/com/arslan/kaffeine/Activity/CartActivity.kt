@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arslan.kaffeine.Adapter.CartAdapter
+import com.arslan.kaffeine.Domain.Notification
 import com.arslan.kaffeine.Domain.Order
 import com.arslan.kaffeine.Helper.ChangeNumberItemsListener
 import com.arslan.kaffeine.Helper.ManagementCart
@@ -37,7 +38,7 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun initCartList() {
-        binding.apply { 
+        binding.apply {
             listView.layoutManager =
                 LinearLayoutManager(this@CartActivity, LinearLayoutManager.VERTICAL, false)
             listView.adapter = CartAdapter(
@@ -66,6 +67,8 @@ class CartActivity : AppCompatActivity() {
 
                 firestore.collection("Users").document(currentUser.uid).collection("Orders").add(order)
                     .addOnSuccessListener {
+                        val notification = Notification("Your order has been placed successfully", System.currentTimeMillis())
+                        firestore.collection("Users").document(currentUser.uid).collection("Notifications").add(notification)
                         managementCart.clearCart()
                         Toast.makeText(this, "Order placed successfully", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, MyOrderActivity::class.java))
@@ -95,7 +98,7 @@ class CartActivity : AppCompatActivity() {
         val discountAmount = totalWithoutDiscount * discountPercentage
         val total = (totalWithoutDiscount - discountAmount)
 
-        binding.apply { 
+        binding.apply {
             totalFeeTxt.text = "$${itemTotal}"
             taxFeeTxt.text = "$${tax}"
             deliveryFeeTxt.text = "$${delivery}"
