@@ -1,15 +1,38 @@
+# Gradle
+.gradle/
+**/build/
+build/
+
+# Android Studio
+.idea/
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+
+# NDK / CMake
+.cxx/
+.externalNativeBuild/
+
+# APK and bundles
+*.apk
+*.aab
+
+# Keystore and signing files
+*.keystore
+*.jks
+key.properties
+
+# Local config
 local.properties
+app/google-services.json
+
+# Kotlin-generated
+.kotlin/
+
+# Logs
+*.log
+
+# Cache
+captures/
+
+# OS files
+.DS_Store
+Thumbs.db
