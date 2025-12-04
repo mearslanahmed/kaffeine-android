@@ -17,13 +17,13 @@ KAFFEINE is a modern, feature-rich Android application designed for coffee lover
 
 ## 📸 Screenshots
 
-| Splash Screen | Login Screen | Register Screen |
-| :---: |:---:|:---:|
-| <img src="Screenshot/01_splash_screen.png" width="250"> | <img src="Screenshot/02_login.png" width="250"> | <img src="Screenshot/03_register.png" width="250"> |
+|                      Splash Screen                       |               Registration Screen                |                    Main Dashboard                    |
+|:--------------------------------------------------------:|:------------------------------------------------:|:----------------------------------------------------:|
+| <img src="Screenshots/01_splash_screen.png" width="250"> | <img src="Screenshots/02_registration_screen.png" width="250"> | <img src="Screenshots/04_dashboard.png" width="250"> |
 
-| Main Dashboard | Cart | My Orders |
-| :---: |:---:|:---:|
-| <img src="Screenshot/04_dashboard.png" width="250"> | <img src="Screenshot/05_cart.png" width="250"> | <img src="Screenshot/06_my_orders.png" width="250"> |
+|                     Items Detail                     |                      Cart                       |                      My Orders                       |
+|:----------------------------------------------------:|:-----------------------------------------------:|:----------------------------------------------------:|
+| <img src="Screenshots/06_items_detail.png" width="250"> | <img src="Screenshots/07_cart.png" width="250"> | <img src="Screenshots/09_my_orders.png" width="250"> |
 
 ## 🛠️ Tech Stack & Libraries
 
